@@ -1,0 +1,9 @@
+🧠 How to Add Global Instructions in GitHub Copilot
+Open Visual Studio Code.
+
+Click the top-right ... (three dots) in the GitHub Copilot panel.
+
+Select "Configure Instructions"
+→ Create New instructions
+→ User Data Folder
+Then just copy Files Here
