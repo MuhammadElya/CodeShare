@@ -1,0 +1,92 @@
+---
+applyTo: '**'
+---
+
+**Package & Dependency Management**
+- Always use `pnpm` as the default package manager
+- Never use `npm` or `yarn`
+- Always use the latest stable package versions
+- Never use deprecated, outdated, or version-pinned packages unless explicitly required
+
+**Task Execution & Automation**
+- Always proceed to the next task automatically unless confirmation is required
+- Only ask for confirmation when an action is destructive (e.g., data loss, deletion)
+- Always attempt to identify and fix bugs automatically
+- Only ask for manual intervention if domain-specific knowledge is required
+- Auto-generate missing files, boilerplate, and tests when possible
+- Auto-lint and format code using standard tools (e.g., Prettier, ESLint, dotnet format)
+
+**Code Quality & Architecture**
+- Organize code using **feature-sliced architecture** when applicable
+- Group code by **feature**, not by type (e.g., keep controller, actions, and helpers together by feature)
+- Always create separate files per action or function when feasible
+- Use `index.ts` / `index.cs` as the entry point in folders/modules
+- Write clean, readable, and self-explanatory code
+- Use meaningful and descriptive names for files, functions, and variables
+- Remove unused imports, variables, and dead code automatically
+
+**Documentation & File Naming**
+- Use kebab-case for all documentation filenames
+- Name product requirement documents as `*.prd.md`
+- Name task tracking files as `*.todos.md` matching the PRD name
+- Use Markdown format (`.md`) for all documentation files
+- Use inline documentation sparingly—only when non-obvious behavior requires explanation
+- Document important types, functions, architecture decisions, and domain logic
+- Use consistent naming across all code and documentation
+
+**PRD & TODO Management**
+- Save PRDs in the `docs/prd/` folder
+- Save TODOs in the `docs/todos/` folder
+- Each PRD must include a **task status section** (e.g., Done, In Progress, Blocked)
+- Each feature or subtask must be traceable inside the PRD
+- Generate a matching `*.todos.md` for each PRD
+- TODO files must contain two sections: `Completed` and `Tasks`
+- Tasks should use Markdown checkboxes (`- [ ]`) and be sorted by feature
+- Never remove completed tasks—move them to the `Completed` section
+- Keep status synced between `.prd.md` and `.todos.md`
+- Append TODOs automatically when new requirements are added to the PRD
+- Retain TODOs even when all tasks are completed for audit/history
+
+**Testing & Validation**
+- Always include a test per function, component, or endpoint
+- Default to automated test runners and assertion libraries (e.g., Vitest, xUnit)
+- Use meaningful and descriptive test names
+- Generate or update related tests when features change
+- Prefer integration tests for flows and unit tests for logic
+- Ensure tests are isolated, predictable, and reproducible
+- Automatically run tests on file save or pre-commit if possible
+
+**Security & Error Handling**
+- Sanitize all input and output, especially in forms, APIs, and database interactions
+- Escape, validate, and normalize all user-supplied data
+- Automatically handle edge cases and error conditions
+- Fail securely and log actionable errors
+- Avoid leaking sensitive information in error messages or logs
+
+**Type Safety & Standards**
+- Use strict typing wherever possible (TypeScript, C#, etc.)
+- Avoid using `any` or untyped variables
+- Use inferred and narrow types when possible
+- Define shared types centrally (e.g., `types/` or `shared/` folders)
+
+**Performance & Optimization**
+- Optimize for performance and scalability where applicable
+- Avoid premature optimization—focus on correctness first
+- Detect and flag performance issues (e.g., unnecessary re-renders, N+1 queries)
+- Use lazy loading, memoization, or caching where needed
+
+**CI/CD & DevOps Readiness**
+- Use scripts/commands that can run in CI environments
+- Ensure all required environment variables are validated or fallback safely
+- Make deployments reproducible and configuration-driven
+
+**Git & Source Control**
+- Ensure PRD and TODO updates are included in commits
+- Use conventional commit messages (e.g., `feat:`, `fix:`, `test:`)
+- Keep commits small and focused on one concern at a time
+- Always include a descriptive commit message explaining the _why_
+
+**Accessibility & UX**
+- Follow accessibility best practices for UI components
+- Ensure forms are keyboard-navigable and screen reader friendly
+- Validate user-facing labels, tooltips, and messages for clarity
