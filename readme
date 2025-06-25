@@ -1,9 +1,22 @@
 🧠 How to Add Global Instructions in GitHub Copilot
 Open Visual Studio Code.
-
 Click the top-right ... (three dots) in the GitHub Copilot panel.
 
 Select "Configure Instructions"
 → Create New instructions
 → User Data Folder
 Then just copy Files Here
+
+
+
+Reference: https://docs.cline.bot/prompting/cline-memory-bank
+
+🧠 How to use Memory Bank, you only need two commands
+You only need to initialize once, make sure that you have already put the memory bank on general instructions
+→ "initialize memory bank"
+
+To save all your instruction within the context, type this
+→ "update memory bank"
+
+Read the Memory Bank files and continue where you left off(Normally you dont need to do this as github copilot automatically embed this to your request)
+→ "follow your custom instructions"
