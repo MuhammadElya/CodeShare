@@ -1,0 +1,108 @@
+follow your custom instruction
+
+# 🧠 Kilo Code: General Rules
+
+## 🔁 Universal Workflow Rules (Applies to All Modes)
+
+- ✅ Always use **pnpm**
+- ❌ Never use **npm** or **yarn**
+- ✅ Always use the **latest stable version** of all packages
+- ❌ Never use deprecated or version-pinned packages unless specified
+- ✅ Always add `-y` when running `npx` to skip prompts
+- ✅ Always proceed to the **next step automatically**
+- ❌ Never ask for confirmation unless it involves **destructive changes**
+- ✅ Always auto-detect and fix bugs
+- ❌ Never ask for manual bug fixes unless domain knowledge is needed
+- ✅ Sanitize all inputs/outputs (e.g., APIs, forms)
+- ✅ Handle edge cases and potential errors
+- ✅ Always generate or update related **unit/integration tests**
+- ✅ Remove all unused imports, variables, and dead code
+- ✅ Respect and follow the defined folder and architecture conventions
+- ✅ Use `index.ts` or `index.cs` as entry points where appropriate
+- ✅ Group code by **feature**, not by file type unless specified
+- ✅ Use strict type checking (TypeScript, C#, etc.)
+- ✅ Write meaningful function and variable names
+- ✅ Document logic only when it’s not self-evident
+- ✅ Use Markdown for all documentation
+
+### 🚫 Forbidden Execution Locations
+
+- ❌ Never execute `npm`, `pnpm`, or any install/build commands on the root `/` path of the filesystem.
+  - ✅ Always ensure you're inside a valid project folder (e.g., `backend/`, `frontend/`, or workspace root)
+
+## 🔧 Backend Rules (`km-backend`)
+
+- ✅ Use Fastify + Prisma + PostgreSQL + TypeScript
+- ✅ Follow domain + action-based structure
+- ✅ One action per file
+- ✅ Sanitize I/O
+- ✅ Strict typing and error handling
+- ✅ No direct DB logic in routes
+- ✅ Keep feature logic clean, modular, and testable
+- ✅ Folder structure must follow:  
+  `/backend/src/domain/[feature]/[controllers|actions|requests|responses]/[file-name].(ts|js)`
+- ✅ Use appropriate suffixes:
+  - `.action.ts`, `.controller.ts`, `.request.ts`, `.response.ts`
+- ✅ All folders and files must use **kebab-case** (lowercase with hyphens)  
+  Example: `user-profile.controller.ts`, not `UserProfileController.ts`
+- ✅ Each file must serve a **single responsibility**
+- ❌ Do not mix logic types (e.g., placing a controller in an actions folder)
+
+## 🧪 Backend Testing Rules (`km-backend-testing`)
+
+- ✅ Use `Vitest` or similar
+- ✅ Test every feature or function
+- ✅ Place tests under `backend/tests`
+- ✅ Use isolated, deterministic tests
+- ✅ Use descriptive test names and assertions
+- ✅ Test the happy path only
+
+## 🎨 Frontend Rules (`km-frontend`)
+
+- ✅ Use React + Vite
+- ✅ Keep code accessible and testable
+- ✅ Organize logic in feature folders
+- ✅ Follow component best practices
+- ✅ Use `render()` pattern where applicable
+- ✅ Folder structure must follow:  
+  `/frontend/src/[feature]/[components|views|services]/[file-name].(tsx|ts|js|jsx)`
+- ✅ All folders and files must use **kebab-case**  
+  Example: `product-list.component.tsx`
+- ✅ Group frontend logic by feature
+- ✅ Each file should focus on a single responsibility
+
+## 📝 PRD Authoring Rules (`km-prd-writer`)
+
+- ✅ PRDs go in `docs/prd/` and are named using `kebab-case.prd.md`
+- ✅ TODOs go in `docs/todos/` and must match the PRD filename: `kebab-case.todos.md`
+- ✅ Must include task status: `Done`, `In Progress`, `Blocked`
+- ✅ Every feature/subtask must be traceable to `.todos.md`
+- ✅ Must generate matching TODO file immediately
+- ✅ Use clear, complete descriptions of decisions and goals
+
+## ✅ TODO File Rules
+
+- ✅ Filename must match PRD: `feature-name.todos.md`
+- ✅ Sections:
+  - `## Tasks` — pending tasks
+  - `## Completed` — finished tasks (do not delete!)
+- ✅ Tasks must be:
+  - Specific, actionable, and traceable
+  - Written in plain markdown with checkboxes
+- ✅ Automatically sync with `.prd.md`
+- ✅ Always update on task start, update, or completion
+- ✅ New PRD requirements must append new TODOs
+- ✅ Keep TODOs even when all tasks are completed (acts as log)
+
+## 🤖 Orchestrator Rules (`km-orchestration`)
+
+- ✅ Follow strict order:
+  1. Create PRD
+  2. Create TODO
+  3. Implement Code
+  4. Update TODOs
+  5. Write Tests
+- ✅ Use `new_task` to delegate work to specific modes
+- ✅ Use `attempt_completion` to summarize results
+- ✅ Break down large tasks into subtasks
+- ✅ Always summarize results once all subtasks are done
